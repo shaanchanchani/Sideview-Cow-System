@@ -1,0 +1,99 @@
+    # Project definitions (do not edit)
+Task: cow_3_data_v2
+scorer: He
+date: Oct8
+multianimalproject:
+identity:
+
+    # Project path (change when moving around)
+project_path: ./dlc_cow_models/cow_3_data_v4-Underbelly-Shaan-2023-11-24
+
+    # Annotation data set configuration (and individual video cropping parameters)
+video_sets:
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/A_clear_180428050000_10.avi:
+    crop: 0, 1280, 0, 720
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/A_clear_180428050000_2.avi:
+    crop: 0, 1280, 0, 720
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/A_clear_180428050000_30.avi:
+    crop: 0, 1280, 0, 720
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/A_clear_180428050000_6.avi:
+    crop: 0, 1280, 0, 720
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/A_clear_180428060000_41.avi:
+    crop: 0, 1280, 0, 720
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/GH070017_26798_27005.avi:
+    crop: 0, 1232, 0, 384
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/GH060017_12790_13069.avi:
+    crop: 0, 1232, 0, 384
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/cam21_2019-09-02_06-45-25_78421_78589.avi:
+    crop: 0, 1920, 0, 1088
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/cam21_2019-09-02_07-45-30_38931_39089.avi:
+    crop: 0, 1920, 0, 1088
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/cam21_2019-09-09_05-00-07_83001_83149.avi:
+    crop: 0, 1920, 0, 1088
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/cam21_2019-09-05_06-53-26_81321_81469.avi:
+    crop: 0, 1920, 0, 1088
+  ./cow_3_data_v4-Shaan-2023-09-30/videos/cam21_2019-09-05_05-53-18_43361_43519.avi:
+    crop: 0, 1920, 0, 1088
+
+
+bodyparts:
+- Nose
+- Head
+- Necktop
+- Shoulder
+- SpineFront
+- SpineBack
+- TailBase
+- BottomBack
+- BottomFront
+- NeckBot
+- LeftFrontLeg
+- LeftFrontHoof
+- RightFrontLeg
+- RightFrontHoof
+- LeftBackLeg
+- LeftBackHoof
+- RightBackHoof
+- RightBackLeg
+- UnderBelly
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
+start: 0
+stop: 1
+numframes2pick: 20
+
+    # Plotting configuration
+skeleton: []
+skeleton_color: black
+pcutoff: 0.1
+dotsize: 12
+alphavalue: 0.7
+colormap: jet
+
+    # Training,Evaluation and Analysis configuration
+TrainingFraction:
+- 0.95
+iteration: 0
+default_net_type:
+default_augmenter:
+snapshotindex: all
+batch_size: 4
+
+    # Cropping Parameters (for analysis and outlier frame detection)
+cropping: false
+    #if cropping is true for analysis, then set the values here:
+x1: 0
+x2: 640
+y1: 277
+y2: 624
+
+    # Refinement configuration (parameters from annotation dataset configuration also relevant in this stage)
+corner2move2:
+- 50
+- 50
+move2corner: true
+resnet: 50

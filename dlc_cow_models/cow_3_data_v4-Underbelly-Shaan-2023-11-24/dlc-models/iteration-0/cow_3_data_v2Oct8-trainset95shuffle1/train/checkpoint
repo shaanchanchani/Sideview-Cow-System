@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/schancha/cow_models/cow_3_data_v4-Underbelly-Shaan-2023-11-24/dlc-models/iteration-0/cow_3_data_v2Oct8-trainset95shuffle1/train/snapshot-45000"
+all_model_checkpoint_paths: "/home/schancha/cow_models/cow_3_data_v4-Underbelly-Shaan-2023-11-24/dlc-models/iteration-0/cow_3_data_v2Oct8-trainset95shuffle1/train/snapshot-45000"

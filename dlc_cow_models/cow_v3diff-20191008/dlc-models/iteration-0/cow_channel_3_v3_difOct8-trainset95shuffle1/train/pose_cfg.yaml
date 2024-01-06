@@ -1,0 +1,75 @@
+all_joints:
+- - 0
+- - 1
+- - 2
+- - 3
+- - 4
+- - 5
+- - 6
+- - 7
+- - 8
+- - 9
+- - 10
+- - 11
+- - 12
+- - 13
+- - 14
+- - 15
+- - 16
+- - 17
+all_joints_names:
+- Nose
+- Head
+- Necktop
+- Shoulder
+- SpineFront
+- SpineBack
+- TailBase
+- BottomBack
+- BottomFront
+- NeckBot
+- LeftFrontLeg
+- LeftFrontHoof
+- RightFrontLeg
+- RightFrontHoof
+- LeftBackLeg
+- LeftBackHoof
+- RightBackHoof
+- RightBackLeg
+bottomheight: 400
+crop: true
+cropratio: 0.4
+dataset: training-datasets/iteration-0/UnaugmentedDataSet_cow_channel_3_v3_difOct8/cow_channel_3_v3_dif_He95shuffle1.mat
+display_iters: 1000
+global_scale: 0.8
+init_weights: /home/he/.conda/envs/deeplabcut/lib/python3.6/site-packages/deeplabcut-2.0.6.3-py3.6.egg/deeplabcut/pose_estimation_tensorflow/models/pretrained/resnet_v1_50.ckpt
+intermediate_supervision: false
+intermediate_supervision_layer: 12
+leftwidth: 400
+location_refinement: true
+locref_huber_loss: true
+locref_loss_weight: 0.05
+locref_stdev: 7.2801
+max_input_size: 1500
+metadataset: training-datasets/iteration-0/UnaugmentedDataSet_cow_channel_3_v3_difOct8/Documentation_data-cow_channel_3_v3_dif_95shuffle1.pickle
+min_input_size: 64
+minsize: 100
+mirror: false
+multi_step:
+- - 0.005
+  - 10000
+- - 0.02
+  - 430000
+- - 0.002
+  - 730000
+- - 0.001
+  - 1030000
+net_type: resnet_50
+num_joints: 18
+pos_dist_thresh: 17
+project_path: /home/he/cow_lameness_videos/skeleton_detection/deeplabcut_projects/cow_channel_3_v3_dif-He-2019-10-08
+rightwidth: 400
+save_iters: 50000
+scale_jitter_lo: 0.5
+scale_jitter_up: 1.25
+topheight: 400
