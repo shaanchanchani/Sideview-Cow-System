@@ -27,16 +27,13 @@ This function requires the following parameters to be specfied:
 
 3) `cow_model_key`: String specifyig which CNN set and cow model to use.
 
-
 The following keys are supported for `cow_model_key`:
 
-- `channel_3` : the original structural model with DLC CNNs Liu trained using data from just the IP camera
+- `channel_3` : the original structural model with DLC CNNs Liu trained using data from just the IP camera. The snapshots for these DLC models are located in `cow_v3rgb-20191008` and `cow_v3diff-20191008`.
 
-- `merge` : the original structural model with DLC CNNs Liu trained using data from all three cameras (IP, DVR, GoPro) 
+- `merge` : the original structural model with DLC CNNs Liu trained using data from all three cameras (IP, DVR, GoPro). The snapshots for these DLC models are located in `cow_3_data_v3-He-2019-10-08` and `cow_3_data_dif_v3-He-2019-10-08`. 
 
-- `merge_underbelly` : structural model with an underbelly point with DLC CNNs I trained using data from all three cameras (IP, DVR, GoPro)
-
-Here's an edited and revised version of the README section:
+- `merge_underbelly` : structural model with an underbelly point with DLC CNNs I trained using data from all three cameras (IP, DVR, GoPro). The snapshots for these DLC models are located in `cow_3_data_v4-Underbelly-Shaan-2023-11-24` and `cow_3_data_dif_v4-Underbelly-Shaan-2023-11-24`.
 
 ## System Breakdown
 
@@ -48,7 +45,7 @@ Another notable function in this file is `run_on_video()`. It runs the entire sy
 
 ### 2. `config.py`
 
-This file contains the code for setting up and initializing the configurations for the cow model. Modifying the system to support another cow model should only require modifying this file. The `Config` class has the following attributes:
+This file contains code for initializing the cow model. Modifying the system to support another cow model should only require adding the modifying this file. The `Config` class has the following attributes:
 
 - `model_set`: Initialized with the `cow_model_key` passed by `run_sideview_system()`. It ensures the correct body part lists, limb connections, and training data for the cow centroid model are used.
 - `cow_centroid_model_data`: Initialized using the `cow_model_key`. It stores the path to a CSV file containing labels to generate the cow centroid model. The actual cow centroid model is generated once this is stored.
@@ -84,19 +81,17 @@ This file contains the code described in section 3.4.3 of He's paper.
 These were the steps taken to modify He's DeepLabCut (DLC) model. In hindsight, this may not have been the easiest way to do this, but these were the steps followed.
 
 1. Download GUI support for DLC with this command:
-
 ```
 pip install --upgrade "deeplabcut[gui,tf]==2.3.8"
 ```
-
 2. Make a copy of the project directory of the DLC model you want to modify.
 3. Update the `project_path` parameter in the `config.yaml` file.
 4. Add the new body part you want to label at the end of the `bodyparts` list in `config.yaml`.
-5. Delete everything except the `labeled-data` folder, `videos` folder, and `config.yaml`. The deleted files will need to be regenerated.
+5. Delete everything except the `labeled-data` folder, `videos` folder, and `config.yaml`. The deleted files will need to be regenerated after modifying the labels.
 6. Open a Python terminal and import `deeplabcut`.
-7. Instead of running `deeplabcut.label_frames(config.yaml path)` (which didn't work), run `deeplabcut.launch_dlc()` and navigate to the "Label Frames" tab on the DLC GUI. Click the "Label Frames" button to launch the Napari GUI.
+7. Run `deeplabcut.launch_dlc()` and navigate to the "Label Frames" tab on the DLC GUI. Click the "Label Frames" button to launch the Napari GUI.
 8. You'll notice that the new body part you want to label appears in the left-hand side color scheme list but is missing from the keypoint selection list on the right. To get the new body part to appear in the keypoint selection list, drag and drop the `config.yaml` file over the GUI.
-9. From here, follow DLC's documentation to regenerate the `training-datasets` and `dlc-models` folders.
+9. From here, you can follow DLC's documentation to regenerate the `training-datasets` and `dlc-models` folders.
 
 For reference, these lines were used to train and evaluate the underbelly models:
 
